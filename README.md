@@ -1,6 +1,62 @@
 # deep-learning-challenge
 
-Instructions
+### REPORT
+
+### Data Preprocessing
+
+Purpose of doing this machine learning:
+  * The purpose of this project is to help a machine learning model predict what company is likely to be a good fit for funding based on other companies recieving funding. It can help predict if an application will be successful or not with a funding request.
+
+What variable(s) are the target(s) for your model?
+  * "IS_SUCCESSFUL" is the target variable in this model.
+
+What variable(s) are the features for your model?
+The final model features are:
+  * NAME, APPLICATION_TYPE, AFFILIATION, CLASSIFICATION, USE_CASE, ORGANIZATION, INCOME_AMT, ASK_AMT.
+
+What variable(s) should be removed from the input data because they are neither targets nor features?
+  * EIN - ID number
+  * STATUS - Not really helpful as one column had 34272 No vs 27 Yes values. Does not seem balanced.
+  * SPECIAL_CONSIDERATIONS - 34294 (1) vs 5 (0) values. Does not seem balanced.
+
+### Compiling, Training, and Evaluating the Model
+
+How many neurons, layers, and activation functions did you select for your neural network model, and why?
+  * I used 3 layers for the model. 
+
+![Training Model](Images/1.png)
+
+* I used three different layers each with a different model to help the computer find a better fit.
+
+Were you able to achieve the target model performance?
+
+* I was able to get to 80% using this model.
+![Performance](Images/2.png)
+
+What steps did you take in your attempts to increase model performance?
+
+* I removed SPECIAL_CONSIDERATIONS and STATUS as they seemed like Edge/Outliers as they had very low values.
+* I added a 3rd layer for more computation power to help solve the model better.
+* I used 3 different activation functions for more solving power. They all seemed to work well with the data.
+* I changed fields like "CLASSIFICATION" and "APPLICATION_TYPE" down to 1000 and binned anything under 1000 into a Other field.
+* I made sure the learning rate was not too high not too low at 0.001.
+* I lastly put the "NAME" back into the model as I thought that it had significance to who gets funded and who does not. Perhaps it is the naming or because a company shows up multiple time and has reach or some other factor. But we let the machine learning decide this. In the second optimization I added back the names of the clients and binned any that were below 2 in terms of frequency. This could create some sort of Bias but it might also help find some sort of patern in the giving/granting of items. This might be a wanted or unwanted criteria for a government or philanthropist to include previous recipients in this model. It did increase the result past 75% to 80.09%. There might be Bias here for the model but its also how some governments/banks/charity funders operate in the first place. 
+
+Summary: Summarize the overall results of the deep learning model. Include a recommendation for how a different model could solve this classification problem, and then explain your recommendation.
+
+  * We could use the KERAS tuning library from Excercise 2-4 to get a optimized fit for this model. This might help get a better score on the model. I did not attempt to optimize it this way but I think it could help.
+
+
+
+
+
+
+
+
+
+
+
+#### Instructions
 Step 1: Preprocess the Data
 Using your knowledge of Pandas and scikit-learn’s StandardScaler(), you’ll need to preprocess the dataset. This step prepares you for Step 2, where you'll compile, train, and evaluate the neural network model.
 
